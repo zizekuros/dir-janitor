@@ -9,9 +9,10 @@ import (
 )
 
 type DirectoryCleaner struct {
-	Directory string
-	Retention int // max age of files to keep (in days)
-	Frequency int // frequency of cleaning up (in seconds)
+	Directory string      // Directory path
+	Retention uint        // Max age of files to keep (in days)
+	Frequency uint        // Frequency of cleaning up (in seconds)
+	Logger    *log.Logger // Custom logger object
 	exitCh    chan int
 }
 
@@ -26,34 +27,31 @@ func (dc *DirectoryCleaner) StartCleanupInterval() {
 			select {
 
 			case <-dc.exitCh:
-				log.Println("Cleanup interval stopped")
 				return
 
 			default:
-				// Good night for some time
 				time.Sleep(time.Duration(dc.Frequency) * time.Second)
 
-				// Read dir
 				files, err := os.ReadDir(dc.Directory)
 				if err != nil {
-					log.Println(err.Error())
+					dc.logf("Can not read dir, error: %s\n", err.Error())
 					continue
 				}
 
 				if len(files) == 0 {
-					log.Println("Skipping cleanup, no files found.")
+					dc.logf("Skipping cleanup, no files found.\n")
 					continue
 				}
 
-				log.Println("Starting cleanup.")
+				dc.logf("Starting cleanup..\n")
+
+				retentionTime := time.Now().AddDate(0, 0, -int(dc.Retention))
 
 				// Loop through files and cleanup files older than specified with Retention setting
-				retentionTime := time.Now().AddDate(0, 0, -dc.Retention)
-
 				for _, file := range files {
 					modTime, errModTime := getFileModificationTime(file)
 					if errModTime != nil {
-						log.Printf("Can't retrieve last modification time for file: %s\n", file.Name())
+						dc.logf("Can't retrieve last modification time for file: %s\n", file.Name())
 						continue
 					}
 
@@ -61,22 +59,21 @@ func (dc *DirectoryCleaner) StartCleanupInterval() {
 						filePath := filepath.Join(dc.Directory, file.Name())
 						errRemove := os.Remove(filePath)
 						if errRemove != nil {
-							log.Printf("Can not remove file, error: %s", errRemove.Error())
+							dc.logf("Can not remove file, error: %s\n", errRemove.Error())
 							continue
 						}
-						log.Printf("Sucessfuly cleaned up: %s\n", filePath)
+						dc.logf("Sucessfully cleaned up: %s\n", filePath)
 					}
 				}
-				log.Println("Cleanup finished.")
+				dc.logf("Cleanup finished.\n")
 			}
-
 		}
-
 	}()
 }
 
-func (fc *DirectoryCleaner) StopCleanupInterval() {
-	close(fc.exitCh)
+func (dc *DirectoryCleaner) StopCleanupInterval() {
+	dc.logf("Stopping cleanup interval.\n")
+	close(dc.exitCh)
 }
 
 func getFileModificationTime(file fs.DirEntry) (time.Time, error) {
@@ -88,4 +85,10 @@ func getFileModificationTime(file fs.DirEntry) (time.Time, error) {
 
 	createTime := fileInfo.ModTime()
 	return createTime, nil
+}
+
+func (dc *DirectoryCleaner) logf(format string, v ...interface{}) {
+	if dc.Logger != nil {
+		dc.Logger.Printf(format, v...)
+	}
 }
