@@ -1,7 +1,7 @@
 # DirJanitor - A Go Package for Directory Cleanup
 
-![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/zizekuros/dir-janitor)
-![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/zizekuros/dir-janitor?label=latest%20release)
+![Go Version](https://img.shields.io/github/go-mod/go-version/zizekuros/dir-janitor)
+[![Latest Release](https://img.shields.io/badge/latest%20release-v0.1.0-blue)](https://github.com/zizekuros/dir-janitor/releases/tag/v0.1.0)
 [![Go Report Card](https://goreportcard.com/badge/github.com/zizekuros/dir-janitor)](https://goreportcard.com/report/github.com/zizekuros/dir-janitor)
 
 DirJanitor is a Go package that provides an easy and automated way to clean up a directory based on file ages. You can specify the maximum age of files to keep and the frequency of the cleanup operation.
