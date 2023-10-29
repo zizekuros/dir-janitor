@@ -1,6 +1,6 @@
 # DirJanitor - A Go Package for Directory Cleanup
 
-![Go Version](https://img.shields.io/badge/Go%20Version-1.20-blue)
+[![Go Version](https://img.shields.io/badge/Go%20Version-1.20-blue)](https://tip.golang.org/doc/go1.20)
 [![Latest Release](https://img.shields.io/badge/latest%20release-v0.1.0-blue)](https://github.com/zizekuros/dir-janitor/releases/tag/v0.1.0)
 [![Go Report Card](https://goreportcard.com/badge/github.com/zizekuros/dir-janitor)](https://goreportcard.com/report/github.com/zizekuros/dir-janitor)
 
