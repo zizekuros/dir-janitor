@@ -62,7 +62,7 @@ func (dc *DirectoryCleaner) StartCleanupInterval() {
 							dc.logf("Can not remove file, error: %s\n", errRemove.Error())
 							continue
 						}
-						dc.logf("Sucessfully cleaned up: %s\n", filePath)
+						dc.logf("Successfully cleaned up: %s\n", filePath)
 					}
 				}
 				dc.logf("Cleanup finished.\n")

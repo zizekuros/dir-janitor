@@ -1,10 +1,24 @@
 # DirJanitor - A Go Package for Directory Cleanup
 
-[![Go Version](https://img.shields.io/badge/Go%20Version-1.20-blue)](https://tip.golang.org/doc/go1.20)
-[![Latest Release](https://img.shields.io/badge/latest%20release-v0.2.0-yellow)](https://github.com/zizekuros/dir-janitor/releases/tag/v0.1.0)
+[![License](https://img.shields.io/badge/license-MIT-blue)](https://github.com/zizekuros/dir-janitor/blob/main/LICENSE)
+[![Go Version](https://img.shields.io/badge/go%20version-1.20-blue)](https://tip.golang.org/doc/go1.20)
+[![Latest Release](https://img.shields.io/badge/latest%20release-v0.2.1-blue)](https://github.com/zizekuros/dir-janitor/releases/tag/v0.2.1)
 [![Go Report Card](https://goreportcard.com/badge/github.com/zizekuros/dir-janitor)](https://goreportcard.com/report/github.com/zizekuros/dir-janitor)
+![Test Status](https://img.shields.io/badge/tests-passed-brightgreen)
 
-DirJanitor is a Go package that provides an easy and automated way to clean up a directory based on file ages. You can specify the maximum age of files to keep and the frequency of the cleanup operation.
+DirJanitor is tiny Go package that provides an easy and automated way to clean up a directory based on file ages. You can specify the maximum age of files to keep and the frequency of the cleanup operation.
+
+I created this package for one of my private projects and decided to share it in case it's helpful to others. 👌
+
+### Alternative
+
+If you're running on Linux, this is the shell command that you can use to achieve a similar job, so you don't need to use this package.
+
+```shell
+find /path/to/directory -type f -mtime +1 -delete
+```
+
+This command will delete files older than one day. Adjust the value after -mtime to match the desired retention period in days.
 
 ## Getting Started
 
@@ -13,7 +27,7 @@ DirJanitor is a Go package that provides an easy and automated way to clean up a
 To use the DirJanitor package in your Go project, you can add it as a dependency to your project's `go.mod` file:
 
 ```shell
-go get github.com/zizekuros/dir-janitor@v0.2.0
+go get github.com/zizekuros/dir-janitor@v0.2.1
 ```
 This command will download and add the package to your project.
 
@@ -74,12 +88,22 @@ To run tests for the DirJanitor package, follow these steps:
 go test ./tests/...
 ```
 
+## Release Log
+
+**v0.2.1** (Most Recent)
+  - Fixed spelling errors and improved documentation.
+
+**v0.2.0**
+  - Added support for custom Logger, addressing [Issue #1](https://github.com/zizekuros/dir-janitor/issues/1).
+  - Added unit tests to ensure package stability.
+
+**v0.1.0** 
+- Initial Release
+
 ## License
 This package is open source and is available under the MIT License.
 
 ## Contributing
-Contributions and feedback are welcome! Feel free to fork the repository, open issues, or submit pull requests.
+Feel free to fork the repository, open issues, or submit pull requests. If you encounter any issues or have questions, please don't hesitate to create an issue.
 
-If you encounter any issues or have questions, please don't hesitate to create an issue.
-
-Happy cleaning!
+Happy cleaning! 🧹
