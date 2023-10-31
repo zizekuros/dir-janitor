@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue)](https://github.com/zizekuros/dir-janitor/blob/main/LICENSE)
 [![Go Version](https://img.shields.io/badge/go%20version-1.20-blue)](https://tip.golang.org/doc/go1.20)
-[![Latest Release](https://img.shields.io/badge/latest%20release-v0.2.1-blue)](https://github.com/zizekuros/dir-janitor/releases/tag/v0.2.1)
+[![Latest Release](https://img.shields.io/badge/latest%20release-v0.2.1-blue)](https://github.com/zizekuros/dir-janitor/releases/tag/v0.3.0)
 [![Go Report Card](https://goreportcard.com/badge/github.com/zizekuros/dir-janitor)](https://goreportcard.com/report/github.com/zizekuros/dir-janitor)
 ![Test Status](https://img.shields.io/badge/tests-passed-brightgreen)
 
@@ -27,7 +27,7 @@ This command will delete files older than one day. Adjust the value after -mtime
 To use the DirJanitor package in your Go project, you can add it as a dependency to your project's `go.mod` file:
 
 ```shell
-go get github.com/zizekuros/dir-janitor@v0.3.0
+go get github.com/zizekuros/dir-janitor
 ```
 This command will download and add the package to your project.
 
