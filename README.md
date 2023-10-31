@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue)](https://github.com/zizekuros/dir-janitor/blob/main/LICENSE)
 [![Go Version](https://img.shields.io/badge/go%20version-1.20-blue)](https://tip.golang.org/doc/go1.20)
-[![Latest Release](https://img.shields.io/badge/latest%20release-v0.2.1-blue)](https://github.com/zizekuros/dir-janitor/releases/tag/v0.3.0)
+[![Latest Release](https://img.shields.io/badge/latest%20release-v0.3.0-blue)](https://github.com/zizekuros/dir-janitor/releases/tag/latest)
 [![Go Report Card](https://goreportcard.com/badge/github.com/zizekuros/dir-janitor)](https://goreportcard.com/report/github.com/zizekuros/dir-janitor)
 ![Test Status](https://img.shields.io/badge/tests-passed-brightgreen)
 
