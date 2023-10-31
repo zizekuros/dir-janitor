@@ -27,7 +27,7 @@ This command will delete files older than one day. Adjust the value after -mtime
 To use the DirJanitor package in your Go project, you can add it as a dependency to your project's `go.mod` file:
 
 ```shell
-go get github.com/zizekuros/dir-janitor@v0.2.1
+go get github.com/zizekuros/dir-janitor@v0.3.0
 ```
 This command will download and add the package to your project.
 
@@ -68,6 +68,9 @@ func main() {
     // Start the cleanup interval
     cleaner.StartCleanupInterval()
 
+    // You can also perform cleanup job manually if you want like that:
+    // cleaner.PerformCleanup()
+
     // Your application logic here
 
     // Stop the cleanup routine when you're done
@@ -85,12 +88,17 @@ To run tests for the DirJanitor package, follow these steps:
 3. Run the following command to execute the tests:
 
 ```shell
-go test ./tests/...
+go test -count=1 ./tests/...
 ```
 
 ## Release Log
 
-**v0.2.1** (Most Recent)
+**v0.3.0** (Most Recent)
+  - Added support for manually performing cleanup actions, addressing [Issue #2](https://github.com/zizekuros/dir-janitor/issues/2).
+  - Additional unit test provided (separate tests for "PerformCleanup" and "CleanupInterval").
+  - Improved documentation.
+
+**v0.2.1**
   - Fixed spelling errors and improved documentation.
 
 **v0.2.0**
